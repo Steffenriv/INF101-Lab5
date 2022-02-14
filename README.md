@@ -90,7 +90,7 @@ _I denne oppgaven skal du bruke debugging, tester og exceptions til å rette opp
 
 Labyrinth-spillet lar deg styre en spiller som går rundt i en labyrinth og plukker opp gull. Dersom spilleren går inn på en rute med gull (gule ruter), skal gullet forsvinne og ruten bli grå. Labyrinten består av steinblokker (sorte ruter) som spilleren må gå rundt, og kantene på kartet.
 
-**5.2.0)** Kjør spillet og prøv å styre spilleren. Du kjører spillet via `inf101.v20.lab4.labyrinth.GUIMain`. CHANGE!!!!
+**5.2.0)** Kjør spillet og prøv å styre spilleren. Du kjører spillet via `labyrinth.Main`.
 ![](img/lab1.gif)
 
 Spillet har en bug som gjør at spilleren kan gå gjennom steiner.
@@ -113,7 +113,7 @@ Gjenskap den beskrevne oppførselen på ditt eget program:
 
 Merk at **??** i feilmeldingen over vil være linjenummer som avhenger litt av hva du har gjort med koden.
 
-**4.2.1)** Finn ut hvor i koden problemet ligger. Du kan gå til stedet som exception ble kastet fra ved å trykke på `Grid.java:??` i stack-tracet under feilmeldingen.
+**5.2.1)** Finn ut hvor i koden problemet ligger. Du kan gå til stedet som exception ble kastet fra ved å trykke på `Grid.java:??` i stack-tracet under feilmeldingen.
 
 Legg merke til at feilmeldingen kastes av forkravs-sjekken i `Grid-klassen`. Forkravet virker fornuftig: den sjekker om argumentene til `set` er utenfor størrelsen til gridden, og kaster exception når de er utenfor brettet. Dette er i tråd med dokumentasjonen i `IGrid`:
 
@@ -141,7 +141,7 @@ Finn enten penn og papir eller et skrive-program på pcen din og skriv ned
 
 ![](img/lab2.gif)
 
-**4.2.2)** Skriv forkrav til `movePlayer`-metoden. Forkrav-sjekker består typisk av en `if`-setning som sjekker egenskaper ved argument-verdiene. `(add-commit-push)`
+**5.2.2)** Skriv forkrav til `movePlayer`-metoden. Forkrav-sjekker består typisk av en `if`-setning som sjekker egenskaper ved argument-verdiene. `(add-commit-push)`
 
 ```java
 if(<argument-egenskap>){
@@ -167,7 +167,7 @@ if(<argument-egenskap>){
 
 ✅ Du kan gå videre når siste testen passerer, koden ikke lenger kaster exceptions og spilleren ikke går gjennom steiner, og du sjekker forkrav i `movePlayer` ved hjelp av `playerCanGo` og returnerer dersom forkravet ikke holder.
 
-**4.2.3)** Legg inn feilhåndtering i `ILabyrinth`. `(add-commit-push)`
+**5.2.3)** Legg inn feilhåndtering i `ILabyrinth`. `(add-commit-push)`
 
 I metoden `LabyrinthGUI.keyPressed` så du at `movePlayer` ble kalt med den retningen spilleren skal gå i. Siden `LabyrinthGUI` har tilgang til å endre grafikken og skrive ut beskjeder, er det naturlig at feilmeldingen til brukeren av spillet håndteres her ved å for eksempel skrive ut en beskjed til skjermen.
 
@@ -188,7 +188,7 @@ Nå får du sikkert feilmeldinger andre steder i programmet. Disse kommer av to 
 
 ✅ Gå videre når du har lagt inn @throws i ILabyrinth. Vi skal rette opp i feilmeldingene i neste steg.
 
-**4.2.4)** Legg inn `try-catch` i `LabyrinthGUI`. Du kan legge det inn på følgende måte:
+**5.2.4)** Legg inn `try-catch` i `LabyrinthGUI`. Du kan legge det inn på følgende måte:
 
 ```java
 public void metode() {
@@ -205,7 +205,7 @@ Du må legge det inn i alle metoder som kaller `movePlayer`. `catch`-blokken ska
 
 _NB: Hvis du bruker autogenerering i denne oppgaven får du fire-fem try-catcher per metodekall, og risikerer å introdusere nye bugs. Kun én try-catch per metode._
 
-**4.2.5)** Legg inn `@throws`i `Labyrinth.movePlayer`-metoden og oppdatering feilhåndteringen til å kaste exception. `(add-commit-push)`
+**5.2.5)** Legg inn `@throws`i `Labyrinth.movePlayer`-metoden og oppdatering feilhåndteringen til å kaste exception. `(add-commit-push)`
 
 ```
 @Override
@@ -221,20 +221,20 @@ Gå tilbake til forkrav-sjekken din. Hvis forkravet ikke holder skal du kaste et
 
 ![](img/bugfixed.gif)
 
-## 4.3 Valgfritt
+## 5.3 Valgfritt
 
-### 4.3.1 Gå tilbake til notatet
+### 5.3.1 Gå tilbake til notatet
 
-Gå tilbake og se på notet du skrev i 4.2.1. Stemmer det du skrev overens med måten du løste oppgaven på? Hva var likt? Hva var annerledes?
+Gå tilbake og se på notet du skrev i 5.2.1. Stemmer det du skrev overens med måten du løste oppgaven på? Hva var likt? Hva var annerledes?
 
 - `@Override` vil si at `movePlayer` i Labyrinth er en implementasjon av `movePlayer` i `ILabyrinth`. Det vil si at selv om `movePlayer` kalles på en variabel som har deklarert type `ILabyrinth`, så er den _konkrete_ metoden som blir kalt under kjøring i `Labyrinth`.
 
 - Vi kunne løst feilhånderingen på andre måter. Hvis beskrev en annen løsning enn vi valgte, tror du din ville fungert også?
 
-### 4.3.2 Utvid labyrint-koden
+### 5.3.2 Utvid labyrint-koden
 
 Labyrinthspillet inneholder støtte for å samle gull og slåss med monster. Du kan legge inn funksjonalitet for dette hvis du vil.
 
-### 4.3.3 Lag Spiller-AI
+### 5.3.3 Lag Spiller-AI
 
 I stedet for å styre spilleren ved hjelp av tastetrykk kan du implementere en algoritme som styrer spilleren rundt. Start ved å lage en metode eller klasse som kan tilfeldig velge retninger å gå i; deretter kan du prøve å finne en lur måte å velge retning på. F.eks. hvis jeg har gull i en nabo-rute, gå mot det.
