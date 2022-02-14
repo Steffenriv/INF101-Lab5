@@ -53,8 +53,9 @@ public interface ILabyrinth {
 	 * Move player one step in direction dir
 	 * If player can not move in that direction leave the player in same position.
 	 * @param d The direction the player should move in
+	 * @throws MovePlayerException
 	 */
-	void movePlayer(GridDirection dir);
+	void movePlayer(GridDirection dir) throws MovePlayerException;
 
 	/**
 	 * Check if a move is valid.

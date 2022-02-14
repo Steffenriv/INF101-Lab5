@@ -107,7 +107,9 @@ public class Labyrinth implements ILabyrinth {
 	}
 
 	@Override
-	public void movePlayer(GridDirection d) {
+	public void movePlayer(GridDirection d) throws MovePlayerException{
+		if (!playerCanGo(d))
+			throw new MovePlayerException("Cannot move there");
 		//TODO: check pre-conditions
 		Location newLoc = playerLoc.getNeighbor(d);
 		tiles.set(playerLoc, LabyrinthTile.OPEN);
