@@ -1,4 +1,4 @@
-# Lab 4
+# Lab 5
 
 ## Læringsmål
 
@@ -6,45 +6,32 @@
 - Kunne oversette ikke-generiske klasser til å bli generisk
 - Bruke `exceptions`
 
-## Klon koden
+## 5.0 Gjør deg kjent med koden
 
-Klon koden for denne lab-oppgaven fra ditt eget repositorie.
-Du finner repositoriet for lab 4 fra følgende side:
-
-```
-https://git.app.uib.no/ii/inf101/21v/assignments
-```
-
-Se på lab-oppgavene fra tidligere uker for detaljert beskrivelse av hvordan. Husk å `add-commit-push` underveis i oppgavene.
-
-_IDE Tips: Dersom andre prosjekter i Eclipse-workspacet inneholder feil, kan du midlertidig fjerne dem ved å høyreklikke på prosjektet med feil og velge "Close Project". Da slepper du å få feilmeldinger og advarsler for et prosjekt du ikke jobber i._
-
-## 4.0 Gjør deg kjent med koden
-
-I denne oppgaven skal vi ta utgangspunkt i en utvidet versjon av lab3. Der jobbet vi med celleautomater, og brukte en datastruktur `CelleGrid` for å holde celler i en todimensjonal liste.
+I denne oppgaven skal vi ta utgangspunkt i en utvidet versjon av lab4. Der jobbet vi med celleautomater, og brukte en datastruktur `CelleGrid` for å holde celler i en todimensjonal liste.
 
 Det du kanskje ikke tenkte over er at CelleGrid ikke trenger å kalle på noen metoder på cellene den holder. Griden sin oppgave er bare å holde cellen på den riktige plassen i datastrukturen. Med andre ord: Grid trenger ikke å vite noe om det elementet den holder.
-Grid klassen i lab4 er en del oppdatert i forhold til lab3, vi har lagt til en klasse som heter Location og en metode i Grid klassen som heter locations(). Dere trenger ikke bry dere mye om disse klassene i denne labben, men det er lurt å forstå hvordan de fungerer for dere kan få bruk for de senere.
+Grid-klassen i lab5 er en del oppdatert i forhold til lab4, vi har lagt til en klasse som heter Location og en metode i Grid klassen som heter `locations()`. Dere trenger ikke bry dere mye om disse klassene i denne labben, men det er lurt å forstå hvordan de fungerer for dere kan få bruk for de senere.
 
-I lab4 har vi introdusert noen flere ferdig-implementerte celleautomater. Vi har også lagt inn et (relativt enkelt) labyrinth-spill som bruker en grid til å representere en spillbane.
+I lab5 har vi introdusert noen flere ferdig-implementerte celleautomater. Vi har også lagt inn et (relativt enkelt) labyrinth-spill som bruker en grid til å representere en spillbane.
 
-**4.0.1)** Kjør de tre celleautomatene ved å kjøre Main-klassen i pakken `cellular` og bytte på hvilke linje som er kommentert ut i main-metoden. Alle tre automatene skal fungere.
+**5.0.1)** Kjør de tre celleautomatene ved å kjøre Main-klassen i pakken `cellular` og bytte på hvilke linje som er kommentert ut i main-metoden. Alle tre automatene skal fungere.
 
-**4.0.2)** Kjør `GUIMain` i `labyrinth`-pakken og sjekk at du kan navigere spilleren i begge versjoner.
+**5.0.2)** Kjør `GUIMain` i `labyrinth`-pakken og sjekk at du kan navigere spilleren i begge versjoner.
 
-**4.0.3)** Kjør testene i prosjektet og forsikre deg om at alle testene untatt LabyrinthTest blir grønne. (Husk: Rød betyr at testen har mislyktes i å verifisere at kode-enheten fungerer, blå betyr at programmet krasjet i løpet av testen og Grønn betyr at testen har verifisert kode-enheten).
+**5.0.3)** Kjør testene i prosjektet og forsikre deg om at alle testene untatt LabyrinthTest blir grønne.
 
 ![](img/junitex.gif)
 
 ✅ Du kan gå videre når du har sjekket at alle programmene kjører og testene passerer (er grønne).
 
-🤔 _Hvorfor starter vi oppgaven med et ferdig-skrevet program som fungerer? Mye av objekt-orientert programmering handler om å gjenbruke kode, redusere duplikasjon, og å fikse bugs. Dette er tema i denne labben._
+🤔 _Hvorfor starter vi oppgaven med et ferdigskrevet program som fungerer? Mye av objekt-orientert programmering handler om å gjenbruke kode, redusere duplikasjon, og å fikse bugs. Dette er tema i denne labben._
 
-## 4.1 Generics
+## 5.1 Generics
 
 _I denne oppgaven skal vi bruke Java generics til å erstatte CellStateGrid og LabyrinthTileGrid med én felles Grid-klasse._
 
-**4.1.1)** Sammenlign de to grid-klassene `CellStateGrid` og `LabyrinthTileGrid`. Sammenlign også interfacene de implementerer.
+**5.1.1)** Sammenlign de to grid-klassene `CellStateGrid` og `LabyrinthTileGrid`. Sammenlign også interfacene de implementerer.
 
 🤔 Har de noe til felles? Har de noen ulikheter?
 
@@ -54,21 +41,21 @@ For å rydde opp må vi gjøre griddet generisk, som vil si at gridet kun brukes
 
 Vi skal nå gjøre `CellStateGrid` generisk, slik at vi ikke har bruk for å flere grid-klasser (med mindre griddene skal _oppføre_ seg annerledes).
 
-**4.1.2)** Gi nytt navn til klassen `CellStateGrid` slik at den bare heter `Grid`. Her kan du bruke det meget nyttige refaktoreringsverktøyet til Eclipse ved å høyreklikke på klassenavnet -> `Refactor` -> `Rename`. Ikke bare vil dette endre filnavnet og klassenavnet i filen, men alle referansene inne i de andre klassene også. 
+**5.1.2)** Gi nytt navn til klassen `CellStateGrid` slik at den bare heter `Grid`. Her kan du bruke det meget nyttige refaktoreringsverktøyet til Eclipse ved å høyreklikke på klassenavnet -> `Refactor` -> `Rename`. Ikke bare vil dette endre filnavnet og klassenavnet i filen, men alle referansene inne i de andre klassene også. I VS Code kan du markere klassenavnet og trykke `F2`.
 
 Vi kan også endre `ICellStateGrid` til å bli et generisk interface med navn `IGrid` på samme måte som du gjorde med `Grid`.
 `(add-commit-push)`
 
-**4.1.3)** Gjør selve klassen generisk ved å legge til typeargumentet `<T>` bak klassenavnet. Gridet sier nå at "jeg vet ikke hvilken type jeg kommer til å holde på, men la oss kalle den for `T`". (Merk at du kunne ha brukt andre navn enn `T`, og det trenger ikke å bare være én bokstav selv om det ofte er vanlig). Forvent at du får en del feilmeldinger og/eller advarsler når du gjør slike endringer. `(add-commit-push)`
+**5.1.3)** Gjør selve klassen generisk ved å legge til typeargumentet `<T>` bak klassenavnet. Gridet sier nå at "jeg vet ikke hvilken type jeg kommer til å holde på, men la oss kalle den for `T`". (Merk at du kunne ha brukt andre navn enn `T`, og det trenger ikke å bare være én bokstav selv om det ofte er vanlig). Forvent at du får en del feilmeldinger og/eller advarsler når du gjør slike endringer. `(add-commit-push)`
 
 (Merk at om du committer endringer som gjør at programmet midlertidig ikke kompilerer kan det være irriterende for andre som jobber på prosjektet. Siden du jobber på ditt eget prosjekt og ikke på et stort prosjekt der mange samarbeider går det helt fint å kommitte med feil. Når du skal jobbe på større prosjekter bør du lære deg om git branching. ).
 
-**4.1.4)** Gå gjennom klassen og endre alle `CellState` til `T`. `(add-commit-push)`
+**5.1.4)** Gå gjennom `Grid` og `IGrid` og endre alle `CellState` til `T`. `(add-commit-push)`
 
-**4.1.5)** Nå skal du få feilmelding i Grid-klassen på
+**5.1.5)** Nå skal du få feilmelding i Grid-klassen på
 
 ```java
-Grid<T> implements ICellStateGrid
+Grid<T> implements IGrid
 ```
 
 (Hvorfor det?).  Endre kodelinjen som var feil til
@@ -81,29 +68,29 @@ Forsikre deg om at du forstår hva denne linjen betyr. Grip gjerne tak i sideman
 
 🤔 Hva er betydningen av den første `T`-en og den andre `T`-en i linjen?
 
-**4.1.6)** Dersom en skal bruke `Grid`-klassen som et grid som holder `ICellState`, så kan vi nå skrive `Grid<ICellState>`. Det samme går for interfacet `IGrid<ICellState>`. Gå gjennom celleautomat-klassene og endre hver referanse til `CellStateGrid` til å bruke den nye generiske `Grid`-klassen. Sjekk at celleautomatene fremdeles fungerer fungerer. 
+**5.1.6)** Dersom en skal bruke `Grid`-klassen som et grid som holder `ICellState`, så kan vi nå skrive `Grid<ICellState>`. Det samme går for interfacet `IGrid<ICellState>`. Gå gjennom celleautomat-klassene og endre hver referanse til `CellStateGrid` til å bruke den nye generiske `Grid`-klassen. Sjekk at celleautomatene fremdeles fungerer fungerer. 
 
 Husk Rød strek under betyr feil som ikke vil kompilere, mens gul strek under betyr warning. Å innføre Generics vil gi noen warnings, selv om det ikke nødvendig å fikse disse så vil du lære litt av å få alle warnings til å gå vekk.
 `(add-commit-push)`
 
 ✅ Nå skal alt kompilere og celleautomatene skal fungere med den generiske grid-klassen.
 
-**4.1.7)** Gå nå gjennom Labyrint-klassene (hovedsaklig `Labyrinth` og `Labyrinth-helper`) og la de bruke `Grid` og `IGrid` i stedet for `LabyrinthTileGrid`. `(add-commit-push)`
+**5.1.7)** Gå nå gjennom Labyrint-klassene (hovedsaklig `Labyrinth` og `Labyrinth-helper`) og la de bruke `Grid` og `IGrid` i stedet for `LabyrinthTileGrid`. `(add-commit-push)`
 
-**4.1.8)** `LabyrinthTileGrid` og `ILabyrinthTileGrid` er nå overflødig. Kjenn på den gode følelsen av å slette disse filene. Rett opp i eventuelle feil og sjekk at begge labyrint-programmene fungerer. 
+**5.1.8)** `LabyrinthTileGrid` og `ILabyrinthTileGrid` er nå overflødig. Kjenn på den gode følelsen av å slette disse filene. Rett opp i eventuelle feil og sjekk at begge labyrint-programmene fungerer. 
 
-(Hvis du glemte noen steder i oppgave 4.1.7 vil du få feilmeldinger når du sletter filene. Fiks disse feilmeldingene før du går videre.)
+(Hvis du glemte noen steder i oppgave 5.1.7 vil du få feilmeldinger når du sletter filene. Fiks disse feilmeldingene før du går videre.)
 `(add-commit-push)`
 
 ✅ Du er ferdig når både celleautomatene og labyrint-spillet bruker den samme generiske Grid-klassen. Alle programmene skal fortsatt fungere og alle testene skal passere.
 
-## 4.2 Exceptions
+## 5.2 Exceptions
 
 _I denne oppgaven skal du bruke debugging, tester og exceptions til å rette opp i en bug._
 
-Labyrinth-spillet lar deg styre en spller som går rundt i en labyrinth og plukker opp gull. Dersom spilleren går inn på en rute med gull (gule ruter), skal gullet forsvinne og ruten bli grå. Labyrinten består av steinblokker (sorte ruter) som spilleren må gå rundt, og kantene på kartet.
+Labyrinth-spillet lar deg styre en spiller som går rundt i en labyrinth og plukker opp gull. Dersom spilleren går inn på en rute med gull (gule ruter), skal gullet forsvinne og ruten bli grå. Labyrinten består av steinblokker (sorte ruter) som spilleren må gå rundt, og kantene på kartet.
 
-**4.2.0)** Kjør spillet og prøv å styre spilleren. Du kjører spillet via `inf101.v20.lab4.labyrinth.GUIMain`.
+**5.2.0)** Kjør spillet og prøv å styre spilleren. Du kjører spillet via `labyrinth.Main`.
 ![](img/lab1.gif)
 
 Spillet har en bug som gjør at spilleren kan gå gjennom steiner.
@@ -111,11 +98,11 @@ Spillet har en bug som gjør at spilleren kan gå gjennom steiner.
 Hvis spilleren prøver å gå utenfor brettet skjer det ingenting i spill-vinduet, men programmer kaster exception og _stack-trace_ til konsollen:
 
 ```java
-Exception in thread "AWT-EventQueue-0" java.lang.IndexOutOfBoundsException
-	at inf101.lab4.grid.Grid.checkLocation(Grid.java:??)
-	at inf101.lab4.grid.Grid.set(Grid.java:??)
-	at inf101.lab4.labyrinth.Labyrinth.movePlayer(Labyrinth.java:???)
-	at inf101.v20.lab4.labyrinth.gui.LabyrinthGUI.keyPressed(LabyrinthGUI.java:???)
+Exception in thread "AWT-EventQueue-0" java.lang.IndexOutOfBoundsException: Row and column indices must be within bounds
+        at datastructure.Grid.checkLocation(Grid.java:??)
+        at datastructure.Grid.set(Grid.java:??)
+        at labyrinth.Labyrinth.movePlayer(Labyrinth.java:??)
+        at labyrinth.gui.LabyrinthGUI.keyPressed(LabyrinthGUI.java:??)
 ```
 
 Gjenskap den beskrevne oppførselen på ditt eget program:
@@ -124,9 +111,9 @@ Gjenskap den beskrevne oppførselen på ditt eget program:
 - Sjekk at spilleren går gjennom sorte ruter.
 - Sjekk at du får exception i konsollen når du prøver å gå utenfor brettet.
 
-Merk at ?? i feilmeldingen over vil være linjenummer som avhenger litt av hva du har gjort med koden.
+Merk at **??** i feilmeldingen over vil være linjenummer som avhenger litt av hva du har gjort med koden.
 
-**4.2.1)** Finn ut hvor i koden problemet ligger. Du kan gå til stedet som exception ble kastet fra ved å trykke på `Grid.java:??` i stack-tracet under feilmeldingen.
+**5.2.1)** Finn ut hvor i koden problemet ligger. Du kan gå til stedet som exception ble kastet fra ved å trykke på `Grid.java:??` i stack-tracet under feilmeldingen.
 
 Legg merke til at feilmeldingen kastes av forkravs-sjekken i `Grid-klassen`. Forkravet virker fornuftig: den sjekker om argumentene til `set` er utenfor størrelsen til gridden, og kaster exception når de er utenfor brettet. Dette er i tråd med dokumentasjonen i `IGrid`:
 
@@ -154,7 +141,7 @@ Finn enten penn og papir eller et skrive-program på pcen din og skriv ned
 
 ![](img/lab2.gif)
 
-**4.2.2)** Skriv forkrav til `movePlayer`-metoden. Forkrav-sjekker består typisk av en `if`-setning som sjekker egenskaper ved argument-verdiene. `(add-commit-push)`
+**5.2.2)** Skriv forkrav til `movePlayer`-metoden. Forkrav-sjekker består typisk av en `if`-setning som sjekker egenskaper ved argument-verdiene. `(add-commit-push)`
 
 ```java
 if(<argument-egenskap>){
@@ -180,7 +167,7 @@ if(<argument-egenskap>){
 
 ✅ Du kan gå videre når siste testen passerer, koden ikke lenger kaster exceptions og spilleren ikke går gjennom steiner, og du sjekker forkrav i `movePlayer` ved hjelp av `playerCanGo` og returnerer dersom forkravet ikke holder.
 
-**4.2.3)** Legg inn feilhåndtering i `ILabyrinth`. `(add-commit-push)`
+**5.2.3)** Legg inn feilhåndtering i `ILabyrinth`. `(add-commit-push)`
 
 I metoden `LabyrinthGUI.keyPressed` så du at `movePlayer` ble kalt med den retningen spilleren skal gå i. Siden `LabyrinthGUI` har tilgang til å endre grafikken og skrive ut beskjeder, er det naturlig at feilmeldingen til brukeren av spillet håndteres her ved å for eksempel skrive ut en beskjed til skjermen.
 
@@ -201,7 +188,7 @@ Nå får du sikkert feilmeldinger andre steder i programmet. Disse kommer av to 
 
 ✅ Gå videre når du har lagt inn @throws i ILabyrinth. Vi skal rette opp i feilmeldingene i neste steg.
 
-**4.2.4)** Legg inn `try-catch` i `LabyrinthGUI`. Du kan legge det inn på følgende måte:
+**5.2.4)** Legg inn `try-catch` i `LabyrinthGUI`. Du kan legge det inn på følgende måte:
 
 ```java
 public void metode() {
@@ -218,7 +205,7 @@ Du må legge det inn i alle metoder som kaller `movePlayer`. `catch`-blokken ska
 
 _NB: Hvis du bruker autogenerering i denne oppgaven får du fire-fem try-catcher per metodekall, og risikerer å introdusere nye bugs. Kun én try-catch per metode._
 
-**4.2.5)** Legg inn `@throws`i `Labyrinth.movePlayer`-metoden og oppdatering feilhåndteringen til å kaste exception. `(add-commit-push)`
+**5.2.5)** Legg inn `@throws`i `Labyrinth.movePlayer`-metoden og oppdatering feilhåndteringen til å kaste exception. `(add-commit-push)`
 
 ```
 @Override
@@ -234,20 +221,20 @@ Gå tilbake til forkrav-sjekken din. Hvis forkravet ikke holder skal du kaste et
 
 ![](img/bugfixed.gif)
 
-## 4.3 Valgfritt
+## 5.3 Valgfritt
 
-### 4.3.1 Gå tilbake til notatet
+### 5.3.1 Gå tilbake til notatet
 
-Gå tilbake og se på notet du skrev i 4.2.1. Stemmer det du skrev overens med måten du løste oppgaven på? Hva var likt? Hva var annerledes?
+Gå tilbake og se på notet du skrev i 5.2.1. Stemmer det du skrev overens med måten du løste oppgaven på? Hva var likt? Hva var annerledes?
 
 - `@Override` vil si at `movePlayer` i Labyrinth er en implementasjon av `movePlayer` i `ILabyrinth`. Det vil si at selv om `movePlayer` kalles på en variabel som har deklarert type `ILabyrinth`, så er den _konkrete_ metoden som blir kalt under kjøring i `Labyrinth`.
 
 - Vi kunne løst feilhånderingen på andre måter. Hvis beskrev en annen løsning enn vi valgte, tror du din ville fungert også?
 
-### 4.3.2 Utvid labyrint-koden
+### 5.3.2 Utvid labyrint-koden
 
 Labyrinthspillet inneholder støtte for å samle gull og slåss med monster. Du kan legge inn funksjonalitet for dette hvis du vil.
 
-### 4.3.3 Lag Spiller-AI
+### 5.3.3 Lag Spiller-AI
 
 I stedet for å styre spilleren ved hjelp av tastetrykk kan du implementere en algoritme som styrer spilleren rundt. Start ved å lage en metode eller klasse som kan tilfeldig velge retninger å gå i; deretter kan du prøve å finne en lur måte å velge retning på. F.eks. hvis jeg har gull i en nabo-rute, gå mot det.
