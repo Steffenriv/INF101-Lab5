@@ -8,18 +8,18 @@
 
 ## 5.0 Gjør deg kjent med koden
 
-I denne oppgaven skal vi ta utgangspunkt i en utvidet versjon av lab4. Der jobbet vi med celleautomater, og brukte en datastruktur `CelleGrid` for å holde celler i en todimensjonal liste.
+I denne oppgaven skal vi ta utgangspunkt i en utvidet versjon av lab4. Der jobbet vi med celleautomater, og brukte en datastruktur `CellGrid` for å holde celler i en todimensjonal liste.
 
-Det du kanskje ikke tenkte over er at CelleGrid ikke trenger å kalle på noen metoder på cellene den holder. Griden sin oppgave er bare å holde cellen på den riktige plassen i datastrukturen. Med andre ord: Grid trenger ikke å vite noe om det elementet den holder.
-Grid-klassen i lab5 er en del oppdatert i forhold til lab4, vi har lagt til en klasse som heter Location og en metode i Grid klassen som heter `locations()`. Dere trenger ikke bry dere mye om disse klassene i denne labben, men det er lurt å forstå hvordan de fungerer for dere kan få bruk for de senere.
+Det du kanskje ikke tenkte over er at `CellGrid` ikke trenger å kalle på noen metoder på cellene den holder. Grid'en sin oppgave er bare å holde cellen på den riktige plassen i datastrukturen. Med andre ord: Grid trenger ikke å vite noe om det elementet den holder.
+Grid-klassen i lab5 er en del oppdatert i forhold til lab4, vi har lagt til en klasse som heter Location og en metode i Grid-klassen som heter `locations()`. Dere trenger ikke bry dere mye om disse klassene i denne labben, men det er lurt å forstå hvordan de fungerer for dere kan få bruk for de senere.
 
 I lab5 har vi introdusert noen flere ferdig-implementerte celleautomater. Vi har også lagt inn et (relativt enkelt) labyrinth-spill som bruker en grid til å representere en spillbane.
 
-**5.0.1)** Kjør de tre celleautomatene ved å kjøre Main-klassen i pakken `cellular` og bytte på hvilke linje som er kommentert ut i main-metoden. Alle tre automatene skal fungere.
+**5.0.1)** Kjør de tre celleautomatene ved å kjøre `Main` i pakken `cellular` og bytte på hvilke linje som er kommentert ut i main-metoden. Alle tre automatene skal fungere.
 
-**5.0.2)** Kjør `GUIMain` i `labyrinth`-pakken og sjekk at du kan navigere spilleren i begge versjoner.
+**5.0.2)** Kjør `Main` i `labyrinth`-pakken og sjekk at du kan navigere spilleren i begge versjoner.
 
-**5.0.3)** Kjør testene i prosjektet og forsikre deg om at alle testene untatt LabyrinthTest blir grønne.
+**5.0.3)** Kjør testene i prosjektet og forsikre deg om at alle testene untatt LabyrinthTest blir grønne. **`GenericGridTest` vil også feile pga. syntax-errors. Disse må du fikse opp i etter du har fullført oppgave 5.1**.
 
 ![](img/junitex.gif)
 
@@ -29,7 +29,7 @@ I lab5 har vi introdusert noen flere ferdig-implementerte celleautomater. Vi har
 
 ## 5.1 Generics
 
-_I denne oppgaven skal vi bruke Java generics til å erstatte CellStateGrid og LabyrinthTileGrid med én felles Grid-klasse._
+_I denne oppgaven skal vi bruke Java generics til å erstatte `CellStateGrid` og `LabyrinthTileGrid` med én felles Grid-klasse._
 
 **5.1.1)** Sammenlign de to grid-klassene `CellStateGrid` og `LabyrinthTileGrid`. Sammenlign også interfacene de implementerer.
 
@@ -50,7 +50,7 @@ Vi kan også endre `ICellStateGrid` til å bli et generisk interface med navn `I
 
 (Merk at om du committer endringer som gjør at programmet midlertidig ikke kompilerer kan det være irriterende for andre som jobber på prosjektet. Siden du jobber på ditt eget prosjekt og ikke på et stort prosjekt der mange samarbeider går det helt fint å kommitte med feil. Når du skal jobbe på større prosjekter bør du lære deg om git branching. ).
 
-**5.1.4)** Gå gjennom `Grid` og `IGrid` og endre alle `CellState` til `T`. `(add-commit-push)`
+**5.1.4)** Gå gjennom `Grid` og `IGrid` og endre alle `CellState`/`ICellState` til `T`. `(add-commit-push)`
 
 **5.1.5)** Nå skal du få feilmelding i Grid-klassen på
 
@@ -70,7 +70,7 @@ Forsikre deg om at du forstår hva denne linjen betyr. Grip gjerne tak i sideman
 
 **5.1.6)** Dersom en skal bruke `Grid`-klassen som et grid som holder `ICellState`, så kan vi nå skrive `Grid<ICellState>`. Det samme går for interfacet `IGrid<ICellState>`. Gå gjennom celleautomat-klassene og endre hver referanse til `CellStateGrid` til å bruke den nye generiske `Grid`-klassen. Sjekk at celleautomatene fremdeles fungerer fungerer. 
 
-Husk Rød strek under betyr feil som ikke vil kompilere, mens gul strek under betyr warning. Å innføre Generics vil gi noen warnings, selv om det ikke nødvendig å fikse disse så vil du lære litt av å få alle warnings til å gå vekk.
+Husk rød strek under betyr feil som ikke vil kompilere, mens gul strek under betyr warning. Å innføre Generics vil gi noen warnings, selv om det ikke nødvendig å fikse disse så vil du lære litt av å få alle warnings til å gå vekk.
 `(add-commit-push)`
 
 ✅ Nå skal alt kompilere og celleautomatene skal fungere med den generiske grid-klassen.
