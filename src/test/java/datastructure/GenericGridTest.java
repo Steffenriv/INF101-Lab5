@@ -28,21 +28,21 @@ public class GenericGridTest {
 
     @Test
     public void genericNumColumns() {
-        for (ICellStateGrid grid : gridInstances) {
+        for (IGrid grid : gridInstances) {
             assertEquals(grid.numColumns(), nColumns);
         }
     }
 
     @Test
     public void genericNumRows() {
-        for (ICellStateGrid grid : gridInstances) {
+        for (IGrid grid : gridInstances) {
             assertEquals(grid.numRows(), nRows);
         }
     }
 
     @Test
     public void canCallGetGeneric() {
-        for (ICellStateGrid grid : gridInstances) {
+        for (IGrid grid : gridInstances) {
             grid.get(new Location(0, 0));
         }
     }
