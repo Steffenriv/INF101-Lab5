@@ -6,7 +6,7 @@ import cellular.cellstate.ICellState;
  * ICellStateGrid is a grid of ICellStates
  * @author Anna Eilertsen - anna.eilertsen@uib.no
  */
-public interface IGrid<T> {
+public interface ICellStateGrid {
 
 	/**
 	 * @return The number of columns in the grid.
@@ -29,7 +29,7 @@ public interface IGrid<T> {
 	 * @param y The row of the cell to change the contents of.
 	 * @param element The contents the cell is to have.
 	 */
-	void set(Location loc, T element);
+	void set(Location loc, ICellState element);
 
 	/**
 	 * Get the contents of the cell in the given x,y location.
@@ -39,20 +39,13 @@ public interface IGrid<T> {
 	 * @param x The column of the cell to get the contents of.
 	 * @param y The row of the cell to get contents of.
 	 */
-	T get(Location loc);
+	ICellState get(Location loc);
 
 	/**
 	 * Makes it possible to iterate over all locations of this grid
 	 * Iteration happens row-wise i.e. First row 0, then row 1 and so on.
 	 */
 	Iterable<Location> locations();
-
-	/**
-	 * This method checks if a given Location is within the bounds of this grid.
-	 * If it is not, an IndexOutOfBoundsException is thrown.
-	 * @param loc the location to check
-	 */
-	void checkLocation(Location loc);
 
 	/**
 	 * Checks if a given Location is within the bounds of the grid. 
@@ -65,5 +58,5 @@ public interface IGrid<T> {
 	 * Make a copy
 	 * @return A shallow copy of the grid, with the same elements
 	 */
-	IGrid<T> copy();
+	ICellStateGrid copy();
 }

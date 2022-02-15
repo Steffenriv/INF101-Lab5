@@ -17,7 +17,7 @@ public class GridLocationIterator implements Iterator<Location>, Iterable<Locati
 	 * Constructs a GridLocationIterator
 	 * @param grid - the grid which we want to iterate through
 	 */
-	public GridLocationIterator(Grid grid) {
+	public GridLocationIterator(CellStateGrid grid) {
 		this(grid.numRows(), grid.numColumns());
 	}
 
