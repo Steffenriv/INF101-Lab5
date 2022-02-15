@@ -11,7 +11,7 @@
 I denne oppgaven skal vi ta utgangspunkt i en utvidet versjon av lab4. Der jobbet vi med celleautomater, og brukte en datastruktur `CellGrid` for å holde celler i en todimensjonal liste.
 
 Det du kanskje ikke tenkte over er at `CellGrid` ikke trenger å kalle på noen metoder på cellene den holder. Grid'en sin oppgave er bare å holde cellen på den riktige plassen i datastrukturen. Med andre ord: Grid trenger ikke å vite noe om det elementet den holder.
-Grid-klassen i lab5 er en del oppdatert i forhold til lab4, vi har lagt til en klasse som heter Location og en metode i Grid-klassen som heter `locations()`. Dere trenger ikke bry dere mye om disse klassene i denne labben, men det er lurt å forstå hvordan de fungerer for dere kan få bruk for de senere.
+Grid-klassen i lab5 er en del oppdatert i forhold til lab4, vi har lagt til en klasse som heter Location og en metode i Grid-klassen som heter `locations()`. Dere trenger ikke bry dere mye om disse klassene i denne labben, men det er lurt å forstå hvordan de fungerer for dere kan få bruk for de senere. 
 
 I lab5 har vi introdusert noen flere ferdig-implementerte celleautomater. Vi har også lagt inn et (relativt enkelt) labyrinth-spill som bruker en grid til å representere en spillbane.
 
