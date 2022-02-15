@@ -221,6 +221,8 @@ Gå tilbake til forkrav-sjekken din. Hvis forkravet ikke holder skal du kaste et
 
 ![](img/bugfixed.gif)
 
+✅✅ For å bestå labben må alle tester passere, inkludert `GenericGridTest`. Husk å lever på Codegrade!
+
 ## 5.3 Valgfritt
 
 ### 5.3.1 Gå tilbake til notatet
