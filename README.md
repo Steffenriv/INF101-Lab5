@@ -79,6 +79,8 @@ Husk rød strek under betyr feil som ikke vil kompilere, mens gul strek under be
 
 **5.1.8)** `LabyrinthTileGrid` og `ILabyrinthTileGrid` er nå overflødig. Kjenn på den gode følelsen av å slette disse filene. Rett opp i eventuelle feil og sjekk at begge labyrint-programmene fungerer. 
 
+Merk at testene for celleautomatene og labyrinth tidligere brukte `CellStateGrid` og `LabyrinthTileGrid`. Disse må nå også endres til `Grid` og `IGrid`.
+
 (Hvis du glemte noen steder i oppgave 5.1.7 vil du få feilmeldinger når du sletter filene. Fiks disse feilmeldingene før du går videre.)
 `(add-commit-push)`
 
