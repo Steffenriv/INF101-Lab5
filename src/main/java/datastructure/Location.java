@@ -17,6 +17,7 @@ public class Location {
 
 	/**
 	 * Constructs a new Location
+	 * 
 	 * @param row the row index
 	 * @param col the column index
 	 */
@@ -27,6 +28,7 @@ public class Location {
 
 	/**
 	 * This method is just for convenience.
+	 * 
 	 * @see GridDirection#getNeighbor()
 	 * @param dir
 	 * @return

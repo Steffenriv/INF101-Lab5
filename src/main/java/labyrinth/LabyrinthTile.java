@@ -11,14 +11,13 @@ public enum LabyrinthTile {
 	MONSTER(Color.RED, 'm'),
 	GOLD(Color.YELLOW, 'g');
 
-
 	private final Color color;
 	private final char symbol;
 
 	private static final Map<Character, LabyrinthTile> SYMBOL_TO_TILE_MAP = new HashMap<>();
 
 	/**
-	 * @param color Color of the tile
+	 * @param color  Color of the tile
 	 * @param symbol Unique symbol of the tile
 	 */
 	LabyrinthTile(Color color, char symbol) {
@@ -27,10 +26,11 @@ public enum LabyrinthTile {
 	}
 
 	static {
-		for(LabyrinthTile labyrinthTile : values()) {
+		for (LabyrinthTile labyrinthTile : values()) {
 			char tileSymbol = labyrinthTile.getSymbol();
-			if(SYMBOL_TO_TILE_MAP.containsKey(tileSymbol)) {
-				throw new IllegalStateException("Duplicate symbols found. Both " + SYMBOL_TO_TILE_MAP.get(tileSymbol) + " and " + labyrinthTile + " use the symbol '" + tileSymbol + "'");
+			if (SYMBOL_TO_TILE_MAP.containsKey(tileSymbol)) {
+				throw new IllegalStateException("Duplicate symbols found. Both " + SYMBOL_TO_TILE_MAP.get(tileSymbol)
+						+ " and " + labyrinthTile + " use the symbol '" + tileSymbol + "'");
 			}
 			SYMBOL_TO_TILE_MAP.put(tileSymbol, labyrinthTile);
 		}
@@ -52,8 +52,9 @@ public enum LabyrinthTile {
 
 	/**
 	 * @param symbol to parse into a {@code LabyrinthTile}
-	 * @return The {@code LabyrinthTile} which is represented by this symbol, or {@code null} if no tile have
-	 * this symbol
+	 * @return The {@code LabyrinthTile} which is represented by this symbol, or
+	 *         {@code null} if no tile have
+	 *         this symbol
 	 */
 	public static LabyrinthTile fromSymbol(char symbol) {
 		return SYMBOL_TO_TILE_MAP.get(symbol);

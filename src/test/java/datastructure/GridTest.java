@@ -52,9 +52,11 @@ public class GridTest {
 		assertThrows(IndexOutOfBoundsException.class, () -> grid.checkLocation(new Location(0, expectedColumns)),
 				"Throw exception when given column is equal to or greater than expectedColumns: " + expectedColumns);
 
-		assertThrows(IndexOutOfBoundsException.class, () -> grid.checkLocation(new Location(-1, 0)), "Throw exception when given row is negative");
+		assertThrows(IndexOutOfBoundsException.class, () -> grid.checkLocation(new Location(-1, 0)),
+				"Throw exception when given row is negative");
 
-		assertThrows(IndexOutOfBoundsException.class, () -> grid.checkLocation(new Location(0, -1)), "Throw exception when given column is negative");
+		assertThrows(IndexOutOfBoundsException.class, () -> grid.checkLocation(new Location(0, -1)),
+				"Throw exception when given column is negative");
 	}
 
 	@Test
@@ -93,7 +95,8 @@ public class GridTest {
 
 		ICellStateGrid newGrid = grid.copy();
 		for (Location loc : grid.locations()) {
-			assertEquals(grid.get(loc), newGrid.get(loc), "Cell at (row " + loc.row + ", col " + loc.col + ") is not properly copied over to the new grid");
+			assertEquals(grid.get(loc), newGrid.get(loc),
+					"Cell at (row " + loc.row + ", col " + loc.col + ") is not properly copied over to the new grid");
 		}
 	}
 }

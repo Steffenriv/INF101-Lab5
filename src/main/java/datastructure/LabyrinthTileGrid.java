@@ -15,29 +15,28 @@ public class LabyrinthTileGrid implements ILabyrinthTileGrid {
 
 	/**
 	 * Construct a grid with the given dimensions.
+	 * 
 	 * @param rows
 	 * @param columns
 	 * @param initElement What the cells should initially hold (possibly null)
 	 */
 	public LabyrinthTileGrid(int rows, int columns, LabyrinthTile initElement) {
-		if(rows <= 0 || columns <= 0) {
+		if (rows <= 0 || columns <= 0) {
 			throw new IllegalArgumentException();
 		}
 
 		this.columns = columns;
 		this.rows = rows;
 		cells = new ArrayList<LabyrinthTile>(columns * rows);
-		for(int i = 0; i < columns * rows; ++i) {
+		for (int i = 0; i < columns * rows; ++i) {
 			cells.add(initElement);
 		}
 	}
-
 
 	@Override
 	public int numColumns() {
 		return columns;
 	}
-
 
 	@Override
 	public int numRows() {
@@ -45,7 +44,7 @@ public class LabyrinthTileGrid implements ILabyrinthTileGrid {
 	}
 
 	public void checkLocation(Location loc) {
-		if(!isOnGrid(loc)) {
+		if (!isOnGrid(loc)) {
 			throw new IndexOutOfBoundsException();
 		}
 	}
@@ -78,16 +77,15 @@ public class LabyrinthTileGrid implements ILabyrinthTileGrid {
 	public LabyrinthTileGrid copy() {
 		LabyrinthTileGrid newGrid = new LabyrinthTileGrid(numRows(), numColumns(), null);
 
-		for(Location loc : this.locations()) {
+		for (Location loc : this.locations()) {
 			newGrid.set(loc, this.get(loc));
 		}
 		return newGrid;
 	}
 
-
 	@Override
 	public boolean isOnGrid(Location loc) {
-		if(loc.row < 0 || loc.row >= rows) {
+		if (loc.row < 0 || loc.row >= rows) {
 			return false;
 		}
 		return loc.col >= 0 && loc.col < columns;

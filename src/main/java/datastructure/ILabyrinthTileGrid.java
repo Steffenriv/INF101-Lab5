@@ -4,6 +4,7 @@ import labyrinth.LabyrinthTile;
 
 /**
  * ILabyrinthTileGrid is a grid of Labyrinth Tiles
+ * 
  * @author Anna Eilertsen - anna.eilertsen@uib.no
  */
 public interface ILabyrinthTileGrid {
@@ -23,7 +24,8 @@ public interface ILabyrinthTileGrid {
 	 * <p>
 	 * y must be greater than or equal to 0 and less than getHeight().
 	 * x must be greater than or equal to 0 and less than getWidth().
-	 * @param loc The location of the cell to change the contents of.
+	 * 
+	 * @param loc     The location of the cell to change the contents of.
 	 * @param element The contents the cell is to have.
 	 */
 	void set(Location loc, LabyrinthTile element);
@@ -33,6 +35,7 @@ public interface ILabyrinthTileGrid {
 	 * <p>
 	 * y must be greater than or equal to 0 and less than getHeight().
 	 * x must be greater than or equal to 0 and less than getWidth().
+	 * 
 	 * @param x The column of the cell to get the contents of.
 	 * @param y The row of the cell to get contents of.
 	 */
@@ -44,6 +47,7 @@ public interface ILabyrinthTileGrid {
 
 	/**
 	 * Make a copy
+	 * 
 	 * @return A shallow copy of the grid, with the same elements
 	 */
 	ILabyrinthTileGrid copy();

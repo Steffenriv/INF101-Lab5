@@ -1,6 +1,5 @@
 package cellular;
 
-
 import cellular.cellstate.AntCellState;
 import cellular.cellstate.CellState;
 import cellular.cellstate.ICellState;
@@ -18,7 +17,8 @@ public class LangtonsAnt implements ICellAutomaton {
 	private static final int MAX_RULE_LENGTH = 32;
 
 	/**
-	 * Stores the rule, in the following sense: Upon reading a state whose value is i,
+	 * Stores the rule, in the following sense: Upon reading a state whose value is
+	 * i,
 	 * char[i] indicates whether to turn left ('L') or right ('R')
 	 */
 	private final char[] rule;
@@ -53,18 +53,20 @@ public class LangtonsAnt implements ICellAutomaton {
 
 	/**
 	 * Checks the rule for validity.
-	 * A string is not a rule its length exceeds the maximum length ({@link #MAX_RULE_LENGTH})
+	 * A string is not a rule its length exceeds the maximum length
+	 * ({@link #MAX_RULE_LENGTH})
 	 * or if it contains characters other than 'L' and 'R'.
+	 * 
 	 * @param rule
 	 */
 	private void checkRule(String rule) {
-		if(rule.length() > MAX_RULE_LENGTH) {
+		if (rule.length() > MAX_RULE_LENGTH) {
 			throw new IllegalArgumentException("The rule " + rule + " is too long. Its length is "
 					+ rule.length() + " while MAX_RULE_LENGTH = " + MAX_RULE_LENGTH);
 		}
 		char[] ruleChars = rule.toCharArray();
-		for(int i = 0; i < ruleChars.length; i++) {
-			if(ruleChars[i] != 'R' && ruleChars[i] != 'L') {
+		for (int i = 0; i < ruleChars.length; i++) {
+			if (ruleChars[i] != 'R' && ruleChars[i] != 'L') {
 				throw new IllegalArgumentException("The rule " + rule +
 						" is not a valid rule (see " + ruleChars[i] +
 						" at position " + i + ").");
@@ -82,7 +84,7 @@ public class LangtonsAnt implements ICellAutomaton {
 	@Override
 	public void initializeCells() {
 		// Set all fields to be in state 0.
-		for(Location loc : currentGeneration.locations()) {
+		for (Location loc : currentGeneration.locations()) {
 			currentGeneration.set(loc, new CellState(0, rule.length));
 		}
 		// Initialize the seenState field (All fields are 0 in the beginning)
@@ -100,26 +102,26 @@ public class LangtonsAnt implements ICellAutomaton {
 		int color = seenState.getValue();
 		Ant nextAnt = ant.copy();
 
-		if(rule[color] == 'L') {
+		if (rule[color] == 'L') {
 			// turn left
 			nextAnt.turnLeft();
 		}
-		if(rule[color] == 'R') {
+		if (rule[color] == 'R') {
 			// turn right
 			nextAnt.turnRight();
 		}
 		nextAnt.move();
 		// throw back into field if necessary
-		if(nextAnt.getRow() >= currentGeneration.numRows()) {
+		if (nextAnt.getRow() >= currentGeneration.numRows()) {
 			nextAnt.setRow(currentGeneration.numRows() - 3);
 		}
-		if(nextAnt.getCol() >= currentGeneration.numColumns()) {
+		if (nextAnt.getCol() >= currentGeneration.numColumns()) {
 			nextAnt.setCol(currentGeneration.numColumns() - 3);
 		}
-		if(nextAnt.getRow() < 0) {
+		if (nextAnt.getRow() < 0) {
 			nextAnt.setRow(2);
 		}
-		if(nextAnt.getCol() < 0) {
+		if (nextAnt.getCol() < 0) {
 			nextAnt.setCol(2);
 		}
 

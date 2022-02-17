@@ -13,14 +13,15 @@ public class LabyrinthHelper {
 		int cols = source[0].length;
 
 		ILabyrinthTileGrid grid = new LabyrinthTileGrid(rows, cols, LabyrinthTile.OPEN);
-		for(int col = 0; col < cols; col++) {
-			for(int row = 0; row < rows; row++) {
+		for (int col = 0; col < cols; col++) {
+			for (int row = 0; row < rows; row++) {
 				Location loc = new Location(row, col);
 				char symbol = source[row][col];
 				LabyrinthTile tile = LabyrinthTile.fromSymbol(symbol);
 
-				if(tile == null) {
-					throw new LabyrinthParseException("Incorrect symbol '" + symbol + "' in labyrinth at row " + row + ", col " + col);
+				if (tile == null) {
+					throw new LabyrinthParseException(
+							"Incorrect symbol '" + symbol + "' in labyrinth at row " + row + ", col " + col);
 				}
 				grid.set(loc, tile);
 			}
@@ -33,12 +34,12 @@ public class LabyrinthHelper {
 		Random random = new Random();
 
 		ILabyrinthTileGrid grid = new LabyrinthTileGrid(width, height, LabyrinthTile.OPEN);
-		for(Location loc : grid.locations()) {
+		for (Location loc : grid.locations()) {
 			int r = random.nextInt(20);
 			LabyrinthTile tile;
-			if(r < 15) {
+			if (r < 15) {
 				tile = LabyrinthTile.OPEN;
-			} else if(r < 19) {
+			} else if (r < 19) {
 				tile = LabyrinthTile.WALL;
 			} else {
 				tile = LabyrinthTile.GOLD;

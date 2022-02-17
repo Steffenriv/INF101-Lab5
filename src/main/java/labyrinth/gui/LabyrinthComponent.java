@@ -9,6 +9,7 @@ import labyrinth.ILabyrinth;
 
 /**
  * A Component that draws the cells in a ICelllabyrinth.
+ * 
  * @author eivind
  */
 class LabyrinthComponent extends Component {
@@ -39,6 +40,7 @@ class LabyrinthComponent extends Component {
 
 	/**
 	 * Construct a labyrinthComponent that will paint the given labyrinth.
+	 * 
 	 * @param grid
 	 */
 	public LabyrinthComponent(ILabyrinth labyrinth) {
@@ -63,7 +65,7 @@ class LabyrinthComponent extends Component {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		for(Location loc : labyrinth.locations()){
+		for (Location loc : labyrinth.locations()) {
 			g.setColor(labyrinth.getColor(loc));
 			g.fillRect(loc.col * (cellWidth + padding) + padding, //
 					loc.row * (cellHeight + padding) + padding, //

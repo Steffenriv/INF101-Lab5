@@ -67,6 +67,7 @@ public enum GridDirection {
 
 	/**
 	 * Finds the Location adjacent in the given direction
+	 * 
 	 * @param loc
 	 * @return
 	 */
@@ -77,6 +78,7 @@ public enum GridDirection {
 	/**
 	 * Returns the direction one get by rotatint this direction
 	 * 90 degrees to the left
+	 * 
 	 * @return
 	 */
 	public GridDirection turnLeft() {
@@ -84,7 +86,7 @@ public enum GridDirection {
 	}
 
 	public GridDirection turnLeft45() {
-		switch(this) {
+		switch (this) {
 			case NORTH:
 				return GridDirection.NORTHWEST;
 			case NORTHWEST:
@@ -108,13 +110,12 @@ public enum GridDirection {
 		}
 	}
 
-
 	public GridDirection turnRight() {
 		return turnRight45().turnRight45();
 	}
 
 	public GridDirection turnRight45() {
-		switch(this) {
+		switch (this) {
 			case NORTH:
 				return GridDirection.NORTHEAST;
 			case NORTHEAST:

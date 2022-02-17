@@ -8,28 +8,28 @@ import datastructure.Location;
 
 public class Labyrinth implements ILabyrinth {
 	private final ILabyrinthTileGrid tiles;
-	//private int playerX = -1;
-	//private int playerY = -1;
+	// private int playerX = -1;
+	// private int playerY = -1;
 	private Location playerLoc;
 
 	boolean playerSet;
 
 	public Labyrinth(ILabyrinthTileGrid tiles) throws LabyrinthParseException {
-		if(tiles == null) {
+		if (tiles == null) {
 			throw new IllegalArgumentException();
 		}
 
 		this.tiles = tiles;
 
 		int numPlayers = 0;
-		for(Location loc : tiles.locations()) {
-			if(tiles.get(loc) == LabyrinthTile.PLAYER) {
+		for (Location loc : tiles.locations()) {
+			if (tiles.get(loc) == LabyrinthTile.PLAYER) {
 				numPlayers++;
 				playerLoc = loc;
 				playerSet = true;
 			}
 		}
-		if(numPlayers != 1) {
+		if (numPlayers != 1) {
 			throw new LabyrinthParseException("Labyrinth created with " + numPlayers + " number of players!");
 		}
 
@@ -39,17 +39,17 @@ public class Labyrinth implements ILabyrinth {
 	public static void checkState(Labyrinth labyrinth) {
 		boolean ok = !labyrinth.playerSet || labyrinth.isValidPos(labyrinth.playerLoc);
 		int numPlayers = 0;
-		for(Location loc : labyrinth.tiles.locations()) {
-			if(labyrinth.tiles.get(loc) == LabyrinthTile.PLAYER) {
+		for (Location loc : labyrinth.tiles.locations()) {
+			if (labyrinth.tiles.get(loc) == LabyrinthTile.PLAYER) {
 				numPlayers++;
 			}
 		}
-		if(labyrinth.playerSet) {
+		if (labyrinth.playerSet) {
 			ok &= numPlayers == 1;
 		} else {
 			ok &= numPlayers == 0;
 		}
-		if(!ok) {
+		if (!ok) {
 			throw new IllegalStateException("bad object");
 		}
 	}
@@ -63,7 +63,7 @@ public class Labyrinth implements ILabyrinth {
 
 	@Override
 	public Color getColor(Location loc) {
-		if(!isValidPos(loc)) {
+		if (!isValidPos(loc)) {
 			throw new IllegalArgumentException("Location invalid");
 		}
 
@@ -101,14 +101,14 @@ public class Labyrinth implements ILabyrinth {
 	}
 
 	private void checkPosition(Location loc) {
-		if(!isValidPos(loc)) {
+		if (!isValidPos(loc)) {
 			throw new IndexOutOfBoundsException("Row and column indices must be within bounds");
 		}
 	}
 
 	@Override
 	public void movePlayer(GridDirection d) {
-		//TODO: check pre-conditions
+		// TODO: check pre-conditions
 		Location newLoc = playerLoc.getNeighbor(d);
 		tiles.set(playerLoc, LabyrinthTile.OPEN);
 		playerLoc = newLoc;
@@ -119,7 +119,7 @@ public class Labyrinth implements ILabyrinth {
 
 	@Override
 	public boolean playerCanGo(GridDirection d) {
-		if(d == null) {
+		if (d == null) {
 			throw new IllegalArgumentException();
 		}
 
@@ -135,7 +135,7 @@ public class Labyrinth implements ILabyrinth {
 	 * @return
 	 */
 	private boolean playerCanGoTo(Location loc) {
-		if(!isValidPos(loc)) {
+		if (!isValidPos(loc)) {
 			return false;
 		}
 
@@ -146,8 +146,8 @@ public class Labyrinth implements ILabyrinth {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		for(int y = tiles.numColumns() - 1; y >= 0; y--) {
-			for(int x = 0; x < tiles.numRows(); x++) {
+		for (int y = tiles.numColumns() - 1; y >= 0; y--) {
+			for (int x = 0; x < tiles.numRows(); x++) {
 				sb.append(getSymbol(new Location(x, y)));
 			}
 			sb.append("\n");

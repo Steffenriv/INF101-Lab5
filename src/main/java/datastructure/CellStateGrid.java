@@ -7,6 +7,7 @@ import cellular.cellstate.ICellState;
 
 /**
  * A Grid contains a set of cell states
+ * 
  * @author Martin Vatshelle - martin.vatshelle@uib.no
  */
 public class CellStateGrid implements ICellStateGrid {
@@ -16,19 +17,20 @@ public class CellStateGrid implements ICellStateGrid {
 
 	/**
 	 * Construct a grid with the given dimensions.
+	 * 
 	 * @param rows
 	 * @param columns
 	 * @param initElement What the cells should initially hold (possibly null)
 	 */
 	public CellStateGrid(int rows, int columns, ICellState initElement) {
-		if(rows <= 0 || columns <= 0) {
+		if (rows <= 0 || columns <= 0) {
 			throw new IllegalArgumentException();
 		}
 
 		this.columns = columns;
 		this.rows = rows;
 		cells = new ArrayList<ICellState>(columns * rows);
-		for(int i = 0; i < columns * rows; ++i) {
+		for (int i = 0; i < columns * rows; ++i) {
 			cells.add(initElement);
 		}
 	}
@@ -53,17 +55,18 @@ public class CellStateGrid implements ICellStateGrid {
 	/**
 	 * This method checks if a given Location is within the bounds of this grid.
 	 * If it is not, an IndexOutOfBoundsException is thrown.
+	 * 
 	 * @param loc the location to check
 	 */
 	public void checkLocation(Location loc) {
-		if(!isOnGrid(loc)) {
+		if (!isOnGrid(loc)) {
 			throw new IndexOutOfBoundsException("Row and column indices must be within bounds");
 		}
 	}
 
 	@Override
 	public boolean isOnGrid(Location loc) {
-		if(loc.row < 0 || loc.row >= rows) {
+		if (loc.row < 0 || loc.row >= rows) {
 			return false;
 		}
 
@@ -93,7 +96,7 @@ public class CellStateGrid implements ICellStateGrid {
 	public ICellStateGrid copy() {
 		CellStateGrid newGrid = new CellStateGrid(numRows(), numColumns(), null);
 
-		for(Location loc : this.locations()) {
+		for (Location loc : this.locations()) {
 			newGrid.set(loc, this.get(loc));
 		}
 		return newGrid;

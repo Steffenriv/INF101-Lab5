@@ -9,15 +9,18 @@ public interface ILabyrinth {
 
 	/**
 	 * Get labyrinth cell contents at a location
+	 * 
 	 * @param loc
 	 * @return The tile at loc
-	 * @throws IllegalArgumentException unless 0 <= x < {@link #numberOfColumns()} and 0 <= y <
-	 * {@link #numberOfRows()}
+	 * @throws IllegalArgumentException unless 0 <= x < {@link #numberOfColumns()}
+	 *                                  and 0 <= y <
+	 *                                  {@link #numberOfRows()}
 	 */
 	LabyrinthTile getCell(Location loc);
 
 	/**
 	 * Get the color of the cell in a given row,col location.
+	 * 
 	 * @param x
 	 * @param y
 	 * @return The color of the cell in the given row and column.
@@ -52,6 +55,7 @@ public interface ILabyrinth {
 	/**
 	 * Move player one step in direction dir
 	 * If player can not move in that direction leave the player in same position.
+	 * 
 	 * @param d The direction the player should move in
 	 */
 	void movePlayer(GridDirection dir);
@@ -68,6 +72,7 @@ public interface ILabyrinth {
 
 	/**
 	 * Iterable over all Locations in this CellAutomaton
+	 * 
 	 * @see IGrid#locations()
 	 */
 	Iterable<Location> locations();

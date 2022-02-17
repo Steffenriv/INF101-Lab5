@@ -4,6 +4,7 @@ import cellular.cellstate.ICellState;
 
 /**
  * ICellStateGrid is a grid of ICellStates
+ * 
  * @author Anna Eilertsen - anna.eilertsen@uib.no
  */
 public interface ICellStateGrid {
@@ -23,10 +24,11 @@ public interface ICellStateGrid {
 	 * <p>
 	 * The Location loc must be within the bounds of the grid, i.e.
 	 * The row index must be greater than or equal to 0 and less than numRows()
-	 * The column index must be greater than or equal to 0 and less than numColumns()
+	 * The column index must be greater than or equal to 0 and less than
+	 * numColumns()
 	 * 
-	 * @param x The column of the cell to change the contents of.
-	 * @param y The row of the cell to change the contents of.
+	 * @param x       The column of the cell to change the contents of.
+	 * @param y       The row of the cell to change the contents of.
 	 * @param element The contents the cell is to have.
 	 */
 	void set(Location loc, ICellState element);
@@ -36,6 +38,7 @@ public interface ICellStateGrid {
 	 * <p>
 	 * y must be greater than or equal to 0 and less than getHeight().
 	 * x must be greater than or equal to 0 and less than getWidth().
+	 * 
 	 * @param x The column of the cell to get the contents of.
 	 * @param y The row of the cell to get contents of.
 	 */
@@ -48,7 +51,8 @@ public interface ICellStateGrid {
 	Iterable<Location> locations();
 
 	/**
-	 * Checks if a given Location is within the bounds of the grid. 
+	 * Checks if a given Location is within the bounds of the grid.
+	 * 
 	 * @param loc the location to check
 	 * @return true if loc is within bounds of the grid, false otherwise.
 	 */
@@ -56,6 +60,7 @@ public interface ICellStateGrid {
 
 	/**
 	 * Make a copy
+	 * 
 	 * @return A shallow copy of the grid, with the same elements
 	 */
 	ICellStateGrid copy();

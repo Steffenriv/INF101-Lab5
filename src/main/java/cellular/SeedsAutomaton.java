@@ -11,14 +11,15 @@ import datastructure.Location;
 
 /**
  * An ICellAutomata that implements the Seeds Cellular Automaton.
+ * 
  * @author eivind
  * @author Martin Vatshelle - martin.vatshelle@uib.no
  * @see ICellAutomata
- * <p>
- * Every cell has two states: Alive or Dead. Each step the state of each
- * cell is decided from its neighbors (diagonal, horizontal and lateral).
- * If a dead cell has exactly two alive neighbors then it becomes alive,
- * otherwise it dies.
+ *      <p>
+ *      Every cell has two states: Alive or Dead. Each step the state of each
+ *      cell is decided from its neighbors (diagonal, horizontal and lateral).
+ *      If a dead cell has exactly two alive neighbors then it becomes alive,
+ *      otherwise it dies.
  */
 public class SeedsAutomaton implements ICellAutomaton {
 
@@ -30,6 +31,7 @@ public class SeedsAutomaton implements ICellAutomaton {
 	/**
 	 * Construct a Seeds ICellAutomaton using a grid with the given height and
 	 * width.
+	 * 
 	 * @param columns
 	 * @param rows
 	 */
@@ -41,8 +43,8 @@ public class SeedsAutomaton implements ICellAutomaton {
 	@Override
 	public void initializeCells() {
 		Random random = new Random();
-		for(Location loc : currentGeneration.locations()) {
-			if(random.nextBoolean()) {
+		for (Location loc : currentGeneration.locations()) {
+			if (random.nextBoolean()) {
 				currentGeneration.set(loc, CellState.ALIVE);
 			} else {
 				currentGeneration.set(loc, CellState.DEAD);
@@ -72,9 +74,9 @@ public class SeedsAutomaton implements ICellAutomaton {
 				currentGeneration.numRows(), currentGeneration.numColumns(),
 				CellState.ALIVE);
 
-		for(Location loc : currentGeneration.locations()) {
+		for (Location loc : currentGeneration.locations()) {
 			int numNeighbours = countNeighbours(loc, CellState.ALIVE);
-			if(numNeighbours == 2) {
+			if (numNeighbours == 2) {
 				nextGeneration.set(loc, CellState.ALIVE);
 			} else {
 				nextGeneration.set(loc, CellState.DEAD);
@@ -86,15 +88,15 @@ public class SeedsAutomaton implements ICellAutomaton {
 
 	private int countNeighbours(Location loc, CellState state) {
 		int numNeighbors = 0;
-		for(GridDirection dir : GridDirection.values()) {
+		for (GridDirection dir : GridDirection.values()) {
 			Location neighbor = loc.getNeighbor(dir);
 
-			if(currentGeneration.isOnGrid(neighbor)) {
+			if (currentGeneration.isOnGrid(neighbor)) {
 				try {
-					if(currentGeneration.get(neighbor) == state) {
+					if (currentGeneration.get(neighbor) == state) {
 						numNeighbors++;
 					}
-				} catch(Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}

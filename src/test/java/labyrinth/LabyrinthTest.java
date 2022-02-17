@@ -1,6 +1,5 @@
 package labyrinth;
 
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -24,12 +23,12 @@ public class LabyrinthTest {
 	}
 
 	private ILabyrinthTileGrid testGrid() {
-		return LabyrinthHelper.loadGrid(new char[][]{ //
-				{'*', '*', '*', '*'}, //
-				{'*', ' ', ' ', '*'}, //
-				{'*', ' ', '*', '*'}, //
-				{'*', 's', '*', '*'}, //
-				{'*', '*', '*', '*'},});
+		return LabyrinthHelper.loadGrid(new char[][] { //
+				{ '*', '*', '*', '*' }, //
+				{ '*', ' ', ' ', '*' }, //
+				{ '*', ' ', '*', '*' }, //
+				{ '*', 's', '*', '*' }, //
+				{ '*', '*', '*', '*' }, });
 	}
 
 	@Test
@@ -56,9 +55,9 @@ public class LabyrinthTest {
 		assertDoesNotThrow(() -> labyrinth.movePlayer(GridDirection.NORTH));
 		assertEquals(LabyrinthTile.PLAYER, labyrinth.getCell(new Location(2, 1)));
 		try {
-			labyrinth.movePlayer(GridDirection.WEST);			
+			labyrinth.movePlayer(GridDirection.WEST);
 		} catch (Exception e) {
-			//This test should pass whether or not exception is thrown
+			// This test should pass whether or not exception is thrown
 		}
 		assertEquals(LabyrinthTile.PLAYER, labyrinth.getCell(new Location(2, 1)));
 		assertDoesNotThrow(() -> labyrinth.movePlayer(GridDirection.NORTH));
@@ -70,21 +69,21 @@ public class LabyrinthTest {
 		assertEquals(LabyrinthTile.PLAYER, labyrinth.getCell(new Location(3, 1)));
 		assertDoesNotThrow(() -> labyrinth.movePlayer(GridDirection.NORTH));
 		assertEquals(LabyrinthTile.PLAYER, labyrinth.getCell(new Location(2, 1)));
-		assertThrows(MovePlayerException.class,() -> labyrinth.movePlayer(GridDirection.WEST));
+		assertThrows(MovePlayerException.class, () -> labyrinth.movePlayer(GridDirection.WEST));
 		assertEquals(LabyrinthTile.PLAYER, labyrinth.getCell(new Location(2, 1)));
 		assertDoesNotThrow(() -> labyrinth.movePlayer(GridDirection.NORTH));
 		assertEquals(LabyrinthTile.PLAYER, labyrinth.getCell(new Location(1, 1)));
 	}
-	
+
 	@Test
 	void throwWhenMultiplePlayersAreDefined() {
 
-		assertThrows(LabyrinthParseException.class, () -> new Labyrinth(LabyrinthHelper.loadGrid(new char[][]{ //
-				{'*', '*', '*', '*'}, //
-				{'*', ' ', 's', '*'}, //
-				{'*', ' ', '*', '*'}, //
-				{'*', 's', '*', '*'}, //
-				{'*', '*', '*', '*'},})), "Should throw exception if board has more than one player");
+		assertThrows(LabyrinthParseException.class, () -> new Labyrinth(LabyrinthHelper.loadGrid(new char[][] { //
+				{ '*', '*', '*', '*' }, //
+				{ '*', ' ', 's', '*' }, //
+				{ '*', ' ', '*', '*' }, //
+				{ '*', 's', '*', '*' }, //
+				{ '*', '*', '*', '*' }, })), "Should throw exception if board has more than one player");
 	}
 
 	@Test
@@ -98,12 +97,12 @@ public class LabyrinthTest {
 
 	@Test
 	void throwWhenNoPlayersAreGiven() {
-		assertThrows(LabyrinthParseException.class, () -> new Labyrinth(LabyrinthHelper.loadGrid(new char[][]{ //
-				{'*', '*', '*', '*'}, //
-				{'*', ' ', ' ', '*'}, //
-				{'*', ' ', '*', '*'}, //
-				{'*', ' ', '*', '*'}, //
-				{'*', '*', '*', '*'},})), "Should throw exception if board have no players");
+		assertThrows(LabyrinthParseException.class, () -> new Labyrinth(LabyrinthHelper.loadGrid(new char[][] { //
+				{ '*', '*', '*', '*' }, //
+				{ '*', ' ', ' ', '*' }, //
+				{ '*', ' ', '*', '*' }, //
+				{ '*', ' ', '*', '*' }, //
+				{ '*', '*', '*', '*' }, })), "Should throw exception if board have no players");
 	}
 
 }

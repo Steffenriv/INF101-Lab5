@@ -29,7 +29,7 @@ class CellAutomatonTest {
 	@Test
 	void testInitializeCells() {
 		for (ICellAutomaton ca : instances) {
-			for(Location loc : ca.locations()) {
+			for (Location loc : ca.locations()) {
 				assertNotNull(ca.getCellState(loc));
 			}
 		}
