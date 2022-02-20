@@ -178,7 +178,7 @@ Vi har altså rettet opp i buggen ved å sjekke _forkrav_ i `movePlayer`. Nå sk
 Begynn med å legge til en `@throws`-deklarasjon i `ILabyrinth`.
 
 ```java
-void movePlayer(Direction dir) throws MovePlayerException;
+void movePlayer(GridDirection dir) throws MovePlayerException;
 ```
 
 Oppdater javadoc til metoden slik at den inneholder `@throws MovePlayerException <beskrivelse av oppførselen>`. Legg inn din egen beskrivelse.
