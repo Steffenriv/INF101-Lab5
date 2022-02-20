@@ -115,7 +115,7 @@ Gjenskap den beskrevne oppførselen på ditt eget program:
 
 Merk at **??** i feilmeldingen over vil være linjenummer som avhenger litt av hva du har gjort med koden.
 
-**5.2.1)** Finn ut hvor i koden problemet ligger. Du kan gå til stedet som exception ble kastet fra ved å trykke på `Grid.java:??` i stack-tracet under feilmeldingen.
+**5.2.1)** Finn ut hvor i koden problemet ligger. Du kan gå til stedet som exception ble kastet fra ved å trykke på `Grid.java:??` i stack-tracet under feilmeldingen (i noen IDE'er må man holde inne command/ctrl eller noe sånt når man trykker).
 
 Legg merke til at feilmeldingen kastes av forkravs-sjekken i `Grid-klassen`. Forkravet virker fornuftig: den sjekker om argumentene til `set` er utenfor størrelsen til gridden, og kaster exception når de er utenfor brettet. Dette er i tråd med dokumentasjonen i `IGrid`:
 
