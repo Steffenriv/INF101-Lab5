@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import datastructure.GridDirection;
-import datastructure.ICellStateGrid;
+import datastructure.IGrid;
 import datastructure.ILabyrinthTileGrid;
 import datastructure.Location;
 
