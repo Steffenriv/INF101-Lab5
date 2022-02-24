@@ -2,7 +2,6 @@ package datastructure;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import cellular.cellstate.ICellState;
 
 /**
@@ -46,10 +45,10 @@ public class Grid<T> implements IGrid<T> {
 	}
 
 	@Override
-	public void set(Location loc, T elem) {
+	public void set(Location loc, T t) {
 		checkLocation(loc);
 
-		cells.set(locationToIndex(loc), elem);
+		cells.set(locationToIndex(loc), t);
 	}
 
 	/**
@@ -93,8 +92,8 @@ public class Grid<T> implements IGrid<T> {
 	}
 
 	@Override
-	public IGrid copy() {
-		Grid newGrid = new Grid(numRows(), numColumns(), null);
+	public IGrid<T> copy() {
+		Grid<T> newGrid = new Grid<T>(numRows(), numColumns(), null);
 
 		for (Location loc : this.locations()) {
 			newGrid.set(loc, this.get(loc));

@@ -1,6 +1,8 @@
 package datastructure;
 
 import java.util.Iterator;
+import cellular.cellstate.ICellState;
+import datastructure.Grid;
 
 /**
  * This class is able to iterate over all locations in a grid.
@@ -18,7 +20,7 @@ public class GridLocationIterator implements Iterator<Location>, Iterable<Locati
 	 * 
 	 * @param grid - the grid which we want to iterate through
 	 */
-	public GridLocationIterator(CellStateGrid grid) {
+	public GridLocationIterator(Grid<ICellState> grid) {
 		this(grid.numRows(), grid.numColumns());
 	}
 

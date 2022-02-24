@@ -73,26 +73,30 @@ public class LabyrinthGUI extends JPanel implements ActionListener, KeyListener 
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == timer) {
-			timer.restart();
-			labyrinthComponent.repaint();
-			return;
-		} else if (e.getSource() == leftButton) {
-			labyrinth.movePlayer(GridDirection.WEST);
-			labyrinthComponent.repaint();
-		} else if (e.getSource() == rightButton) {
-			labyrinth.movePlayer(GridDirection.EAST);
-			labyrinthComponent.repaint();
-		} else if (e.getSource() == upButton) {
-			labyrinth.movePlayer(GridDirection.NORTH);
-			labyrinthComponent.repaint();
-		} else if (e.getSource() == downButton) {
-			labyrinth.movePlayer(GridDirection.SOUTH);
-			labyrinthComponent.repaint();
-		} else if (e.getSource() == setBoardButton) {
-			labyrinth = labyrinthMaker.get();
-			labyrinthComponent.setLabyrinth(labyrinth);
-			labyrinthComponent.repaint();
+		try {
+			if (e.getSource() == timer) {
+				timer.restart();
+				labyrinthComponent.repaint();
+				return;
+			} else if (e.getSource() == leftButton) {
+				labyrinth.movePlayer(GridDirection.WEST);
+				labyrinthComponent.repaint();
+			} else if (e.getSource() == rightButton) {
+				labyrinth.movePlayer(GridDirection.EAST);
+				labyrinthComponent.repaint();
+			} else if (e.getSource() == upButton) {
+				labyrinth.movePlayer(GridDirection.NORTH);
+				labyrinthComponent.repaint();
+			} else if (e.getSource() == downButton) {
+				labyrinth.movePlayer(GridDirection.SOUTH);
+				labyrinthComponent.repaint();
+			} else if (e.getSource() == setBoardButton) {
+				labyrinth = labyrinthMaker.get();
+				labyrinthComponent.setLabyrinth(labyrinth);
+				labyrinthComponent.repaint();
+			}
+		} catch (MovePlayerException ex) {
+			message.setText("BAD MOVE!");
 		}
 		updateMessage();
 	}
@@ -151,19 +155,23 @@ public class LabyrinthGUI extends JPanel implements ActionListener, KeyListener 
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT) {
-			labyrinth.movePlayer(GridDirection.WEST);
-			labyrinthComponent.repaint();
-		} else if (key == KeyEvent.VK_RIGHT) {
-			labyrinth.movePlayer(GridDirection.EAST);
-			labyrinthComponent.repaint();
-		} else if (key == KeyEvent.VK_UP) {
-			labyrinth.movePlayer(GridDirection.NORTH);
-			labyrinthComponent.repaint();
-		} else if (key == KeyEvent.VK_DOWN) {
-			labyrinth.movePlayer(GridDirection.SOUTH);
-			labyrinthComponent.repaint();
+		try {
+			int key = e.getKeyCode();
+			if (key == KeyEvent.VK_LEFT) {
+				labyrinth.movePlayer(GridDirection.WEST);
+				labyrinthComponent.repaint();
+			} else if (key == KeyEvent.VK_RIGHT) {
+				labyrinth.movePlayer(GridDirection.EAST);
+				labyrinthComponent.repaint();
+			} else if (key == KeyEvent.VK_UP) {
+				labyrinth.movePlayer(GridDirection.NORTH);
+				labyrinthComponent.repaint();
+			} else if (key == KeyEvent.VK_DOWN) {
+				labyrinth.movePlayer(GridDirection.SOUTH);
+				labyrinthComponent.repaint();
+			}
+		} catch(MovePlayerException ex) {
+			message.setText("BAD MOVE!");
 		}
 		updateMessage();
 	}

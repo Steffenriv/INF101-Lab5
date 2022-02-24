@@ -5,8 +5,8 @@ import java.util.Random;
 import cellular.cellstate.CellState;
 import cellular.cellstate.ICellState;
 import datastructure.Grid;
-import datastructure.GridDirection;
 import datastructure.IGrid;
+import datastructure.GridDirection;
 import datastructure.Location;
 
 /**
@@ -34,7 +34,7 @@ public class GameOfLife implements ICellAutomaton {
 	/**
 	 * The grid of cells
 	 */
-	private Grid<ICellState> currentGeneration;
+	private IGrid<ICellState> currentGeneration;
 
 	/**
 	 * Construct a Game Of Life Cell Automaton that holds cells in a grid of the
@@ -77,7 +77,7 @@ public class GameOfLife implements ICellAutomaton {
 	@Override
 	public void step() {
 
-		Grid<ICellState> nextGeneration = new  Grid<ICellState>(
+		IGrid<ICellState> nextGeneration = new  Grid<ICellState>(
 				currentGeneration.numRows(), currentGeneration.numColumns(),
 				CellState.ALIVE);
 

@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import cellular.cellstate.CellState;
-
+import datastructure.IGrid;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 public class GridTest {
 
 	Random random = new Random(0L);
-	CellStateGrid grid;
+	Grid<CellState> grid;
 
 	@Test
 	public void checkRowAndColumnEqualToConstructionParametersGiven() {
@@ -25,7 +25,7 @@ public class GridTest {
 	}
 
 	private void setGrid(int rows, int columns) {
-		grid = new CellStateGrid(rows, columns, CellState.DEAD);
+		grid = new Grid<CellState>(rows, columns, CellState.DEAD);
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class GridTest {
 			grid.set(loc, CellState.random(random));
 		}
 
-		ICellStateGrid newGrid = grid.copy();
+		IGrid<CellState> newGrid = grid.copy();
 		for (Location loc : grid.locations()) {
 			assertEquals(grid.get(loc), newGrid.get(loc),
 					"Cell at (row " + loc.row + ", col " + loc.col + ") is not properly copied over to the new grid");
